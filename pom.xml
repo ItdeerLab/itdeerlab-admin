@@ -11,7 +11,7 @@
 
 	<!-- itdeerlab-admin项目名称及描述 -->
 	<name>itdeerlab-admin</name>
-	<description>itdeerlab-admin is itdeer&#x60;s blog project for Spring Boot</description>
+	<description>itdeerlab-admin is itdeer blog project for Spring Boot</description>
 
 	<!-- itdeerlab-admin关于SpringBoot版本定义 -->
 	<parent>
