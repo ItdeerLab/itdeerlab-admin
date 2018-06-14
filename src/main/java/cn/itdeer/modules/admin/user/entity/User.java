@@ -24,17 +24,19 @@ import java.util.Date;
 @Table(name = "itdeer_user")
 public class User extends BaseEntity{
 
+    @Column(name = "user_name")
     private String name;
 
     @Email
-    @Column(name = "email")
+    @Column(name = "user_email")
     private String email;
 
-    @Column(name = "phone_number")
+    @Column(name = "user_phonenumber")
     private String phoneNumber;
 
+    @Column(name = "user_address")
     private String address;
 
-    @Column(name = "register_date")
+    @Column(name = "user_registerdate")
     private Date registerDate;
 }
