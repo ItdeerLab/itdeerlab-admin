@@ -20,9 +20,8 @@ public class MetasServiceImpl implements MetasService{
     private MetasRepository metasRepository;
 
     /**
-     * 按照ID查询,一个Metas对象
-     * @param id
-     * @return
+     * @param id Metas的ID
+     * @return 根据Metas ID查询出来的Metas对象
      */
     @Override
     public Metas findById(String id) {
@@ -34,10 +33,11 @@ public class MetasServiceImpl implements MetasService{
 
     /**
      * 保存一个Metas对象
-     * @param metas
+     * @param metas 一个Metas的对象信息
      */
     @Override
     public void save(Metas metas) {
         metasRepository.save(metas);
     }
+
 }

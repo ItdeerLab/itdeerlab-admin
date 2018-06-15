@@ -12,15 +12,15 @@ import cn.itdeer.modules.admin.system.entity.Metas;
 public interface MetasService {
 
     /**
-     * 按照ID查询,一个Metas对象
-     * @param id
-     * @return
+     * 按照ID进行查询Metas的信息
+     * @param id Metas的ID
+     * @return 根据Metas ID查询出来的Metas对象
      */
     Metas findById(String id);
 
     /**
      * 保存一个Metas对象
-     * @param metas
+     * @param metas 一个Metas的对象信息
      */
     void save(Metas metas);
 }
