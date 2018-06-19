@@ -21,6 +21,14 @@
 		<relativePath/>
 	</parent>
 
+	<!-- 阿里源仓库地址 -->
+	<repository>
+		<id>alimaven</id>
+		<name>aliyun maven</name>
+		<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		<layout>default</layout>
+	</repository>
+
 	<!-- itdeerlab-admin属性定义 -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -94,6 +102,19 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+
+		<!-- itdeerlab-admin动态文档依赖定义 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
