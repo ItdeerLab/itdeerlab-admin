@@ -21,13 +21,36 @@
 		<relativePath/>
 	</parent>
 
-	<!-- 阿里源仓库地址 -->
-	<repository>
-		<id>alimaven</id>
-		<name>aliyun maven</name>
-		<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-		<layout>default</layout>
-	</repository>
+    <repositories>
+
+	    <!-- 阿里源仓库地址 -->
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+        </repository>
+
+	    <!-- Spring源仓库地址 -->
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
 
 	<!-- itdeerlab-admin属性定义 -->
 	<properties>
@@ -98,6 +121,14 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- itdeerlab-admin项目热部署依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+		</dependency>
+
+		<!-- itdeerlab-admin项目Junit测试 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -122,6 +153,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<fork>true</fork>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
