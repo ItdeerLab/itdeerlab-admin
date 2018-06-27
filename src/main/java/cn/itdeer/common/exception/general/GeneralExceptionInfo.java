@@ -1,11 +1,11 @@
-package cn.itdeer.common.exception;
+package cn.itdeer.common.exception.general;
 
 /**
  * Description :
  * PackageName : cn.itdeer.common.exception
  * ProjectName : itdeerlab-admin
  * CreatorName : itdeer.cn
- * CreateTime : 2018/6/13/23:29
+ * CreateTime : 18-6-27/下午6:06
  */
-public class SystemException {
+public class GeneralExceptionInfo {
 }
