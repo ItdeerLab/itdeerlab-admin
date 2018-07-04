@@ -1,5 +1,6 @@
 package cn.itdeer.common.exception.general;
 
+import cn.itdeer.common.exception.info.ExceptionInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,30 +18,40 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 public class GeneralExceptionHandler {
 
+    private ExceptionInfo exceptionInfo;
 
     /**
      * GeneralException异常的全局处理方式
-     * @param req 请求Request
+     * @param hsr 请求Request
      * @param ge GeneralException异常
-     * @return GeneralExceptionInfo 对象
+     * @return ExceptionInfo 对象
      */
     @ExceptionHandler(value = GeneralException.class)
-    public GeneralExceptionInfo errorHandler(HttpServletRequest req, GeneralException ge) {
-        GeneralExceptionInfo generalExceptionInfo = new GeneralExceptionInfo();
-        log.error("");
-        return generalExceptionInfo;
+    public ExceptionInfo generalHandler(HttpServletRequest hsr, GeneralException ge) {
+        exceptionInfo = new ExceptionInfo();
+        exceptionInfo.setCode(ge.getCode());
+        exceptionInfo.setMessage(ge.getMessage());
+        exceptionInfo.setUrl(hsr.getRequestURI());
+
+        log.error("GeneralExceptionHandler Host: {} Invokes Url: {} Error: {}" + hsr.getRemoteHost() + hsr.getRequestURI() + ge.getMessage());
+
+        return exceptionInfo;
     }
 
     /**
-     *
-     * @param req
-     * @param e
-     * @return
-     * @throws Exception
+     * 默认Exception异常的全局处理方式
+     * @param hsr 请求Request
+     * @param e Exception类型异常
+     * @return ExceptionInfo 对象
      */
     @ExceptionHandler(value = Exception.class)
-    public Object defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-        log.error("DefaultException Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
-        return e.getMessage();
+    public ExceptionInfo defaultHandler(HttpServletRequest hsr, Exception e) {
+        exceptionInfo = new ExceptionInfo();
+        exceptionInfo.setMessage(e.getMessage());
+        exceptionInfo.setUrl(hsr.getRequestURI());
+
+        log.error("ExceptionHandler Host: {} Invokes Url: {} Error: {}" + hsr.getRemoteHost() + hsr.getRequestURI() + e.getMessage());
+
+        return exceptionInfo;
     }
 }

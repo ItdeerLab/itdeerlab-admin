@@ -1,7 +1,7 @@
 package cn.itdeer.common.exception.rest;
 
 /**
- * Description : RestFul风格的API请求异常
+ * Description : 自定义RestFul风格异常类
  * PackageName : cn.itdeer.common.exception
  * ProjectName : itdeerlab-admin
  * CreatorName : itdeer.cn
@@ -10,5 +10,14 @@ package cn.itdeer.common.exception.rest;
 
 public class RestException extends RuntimeException{
 
+    private Integer code;
 
+    public RestException(String message, Integer code) {
+        super(message);
+        this.code = code;
+    }
+
+    public Integer getCode(){
+        return code;
+    }
 }
