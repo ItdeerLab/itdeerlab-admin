@@ -146,6 +146,12 @@
 			<version>2.7.0</version>
 		</dependency>
 
+		<!-- itdeerlab-admin使用Java工具依赖定义 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>

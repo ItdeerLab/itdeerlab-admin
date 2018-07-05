@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Description :
+ * Description : 系统管理(Log日志)实体类
  * PackageName : cn.itdeer.modules.admin.system.entity
  * ProjectName : itdeerlab-admin
  * CreatorName : itdeer.cn
@@ -23,21 +23,24 @@ import javax.persistence.Table;
 public class Log extends BaseEntity{
 
     @Column(name = "log_time")
-    private Long time;                            //所属
+    private Long time;                            //日志记录时间
 
     @Column(name = "log_requestmethod")
-    private String requestMethod;                        //关键词
+    private String requestMethod;                 //请求的方法(Get Post Put等)
 
     @Column(name = "log_accessmethod")
-    private String accessMethod;                        //关键词
+    private String accessMethod;                  //请求系统的方法(提供请求的方法)
 
     @Column(name = "log_url")
-    private String url;                     //描述
+    private String url;                           //请求地址
 
     @Column(name = "log_ip")
-    private String ip;                       //ico图片ID
+    private String ip;                            //请求者IP
 
     @Column(name = "log_args")
-    private String args;                      //ico图片地址
+    private String args;                          //请求参数
+
+    @Column(name = "log_status")
+    private String status;                        //日志状态
 
 }

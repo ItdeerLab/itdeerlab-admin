@@ -27,7 +27,7 @@ public class MetasController {
 
     @GetMapping(name = "/metas/{id}")
     public String findById(@PathVariable String id, Model model){
-
+        System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKkk");
         Metas metas = metasService.findById(id);
         model.addAttribute("metas",metas);
         return "";

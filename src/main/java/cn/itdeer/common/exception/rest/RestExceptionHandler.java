@@ -37,7 +37,7 @@ public class RestExceptionHandler {
         exceptionInfo.setMessage(re.getMessage());
         exceptionInfo.setUrl(hsr.getRequestURI());
 
-        log.error("RestExceptionHandler Host: {} Invokes Url: {} Error: {}" + hsr.getRemoteHost() + hsr.getRequestURI() + re.getMessage());
+        log.error("RestExceptionHandler:    Request Status: {}    Request Host: {}    Request Url: {}    Error Message: {}    Time: {}", re.getCode(), hsr.getRemoteHost(), hsr.getRequestURI(), re.getMessage(), exceptionInfo.getTime());
 
         return exceptionInfo;
     }
