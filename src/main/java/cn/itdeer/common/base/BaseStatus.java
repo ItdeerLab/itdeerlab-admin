@@ -9,5 +9,10 @@ package cn.itdeer.common.base;
  */
 public enum BaseStatus {
 
-    ERROR,WARN,INFO;
+    ERROR,
+    WARN,
+    INFO,
+    GENERAL,
+    API
+    ;
 }

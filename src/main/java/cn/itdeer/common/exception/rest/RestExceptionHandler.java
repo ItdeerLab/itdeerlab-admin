@@ -1,7 +1,11 @@
 package cn.itdeer.common.exception.rest;
 
+import cn.itdeer.common.base.BaseStatus;
 import cn.itdeer.common.exception.info.ExceptionInfo;
+import cn.itdeer.modules.admin.system.entity.ExceptionRecord;
+import cn.itdeer.modules.admin.system.service.ExceptionRecordService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -19,6 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RestControllerAdvice
 public class RestExceptionHandler {
+
+    @Autowired
+    private ExceptionRecordService logService;
 
     private ExceptionInfo exceptionInfo;
 
@@ -38,6 +45,17 @@ public class RestExceptionHandler {
         exceptionInfo.setUrl(hsr.getRequestURI());
 
         log.error("RestExceptionHandler:    Request Status: {}    Request Host: {}    Request Url: {}    Error Message: {}    Time: {}", re.getCode(), hsr.getRemoteHost(), hsr.getRequestURI(), re.getMessage(), exceptionInfo.getTime());
+
+        ExceptionRecord exceptionRecord = new ExceptionRecord(
+                exceptionInfo.getTime(),
+                hsr.getMethod(),
+                hsr.getRequestURI(),
+                hsr.getRequestURL().toString(),
+                hsr.getRemoteHost(),
+                BaseStatus.API.toString(),
+                BaseStatus.ERROR.toString()
+        );
+        logService.save(exceptionRecord);
 
         return exceptionInfo;
     }

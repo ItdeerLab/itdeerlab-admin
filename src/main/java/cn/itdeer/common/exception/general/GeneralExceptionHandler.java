@@ -2,8 +2,8 @@ package cn.itdeer.common.exception.general;
 
 import cn.itdeer.common.base.BaseStatus;
 import cn.itdeer.common.exception.info.ExceptionInfo;
-import cn.itdeer.modules.admin.system.entity.Log;
-import cn.itdeer.modules.admin.system.service.LogService;
+import cn.itdeer.modules.admin.system.entity.ExceptionRecord;
+import cn.itdeer.modules.admin.system.service.ExceptionRecordService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 public class GeneralExceptionHandler {
 
     @Autowired
-    private LogService logService;
+    private ExceptionRecordService logService;
 
     private ExceptionInfo exceptionInfo;
 
@@ -45,28 +45,17 @@ public class GeneralExceptionHandler {
         exceptionInfo.setUrl(hsr.getRequestURI());
 
         log.error("GeneralExceptionHandler:    Request Status: {}    Request Host: {}    Request Url: {}    Error Message: {}    Time: {}", ge.getCode(), hsr.getRemoteHost(), hsr.getRequestURI(), ge.getMessage(), exceptionInfo.getTime());
-        //日志入库
-        //TODO
 
-        Log log = new Log();
-        log.setTime(exceptionInfo.getTime());
-        log.setIp(hsr.getRemoteHost());
-        log.setAccessMethod(hsr.getRequestURI());
-        log.setRequestMethod(hsr.getMethod());
-        log.setStatus(BaseStatus.ERROR.toString());
-        log.setUrl(hsr.getRequestURL().toString());
-        logService.save(log);
-
-        System.out.println(hsr.getMethod());    //GET
-        System.out.println(hsr.getRequestURI()); // /admin/user/list
-        System.out.println(hsr.getAuthType());
-        System.out.println(hsr.getContextPath());
-        System.out.println(hsr.getPathInfo());
-        System.out.println(hsr.getRemoteHost());    //192.168.1.67
-        System.out.println(hsr.getServletPath()); // /admin/user/list
-        System.out.println(hsr.getQueryString());
-        System.out.println(hsr.getRequestURL());        //http://172.24.4.238:8080/admin/user/list
-
+        ExceptionRecord exceptionRecord = new ExceptionRecord(
+                exceptionInfo.getTime(),
+                hsr.getMethod(),
+                hsr.getRequestURI(),
+                hsr.getRequestURL().toString(),
+                hsr.getRemoteHost(),
+                BaseStatus.GENERAL.toString(),
+                BaseStatus.ERROR.toString()
+                );
+        logService.save(exceptionRecord);
 
         return exceptionInfo;
     }
