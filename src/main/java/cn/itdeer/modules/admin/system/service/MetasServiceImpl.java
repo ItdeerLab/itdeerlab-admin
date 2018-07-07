@@ -1,5 +1,7 @@
 package cn.itdeer.modules.admin.system.service;
 
+import cn.itdeer.common.exception.general.GeneralException;
+import cn.itdeer.common.exception.info.CodeMessageInfo;
 import cn.itdeer.modules.admin.system.entity.Metas;
 import cn.itdeer.modules.admin.system.repository.MetasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,8 @@ public class MetasServiceImpl implements MetasService{
      * @return 根据Metas ID查询出来的Metas对象
      */
     @Override
-    public Metas findById(String id) {
-        if(id != null && !id.isEmpty()){
-            return metasRepository.getOne(id);
-        }
-        return null;
+    public Metas findById(String id) throws GeneralException{
+        return metasRepository.getOne(id);
     }
 
     /**
@@ -38,6 +37,20 @@ public class MetasServiceImpl implements MetasService{
     @Override
     public void save(Metas metas) {
         metasRepository.save(metas);
+    }
+
+    /**
+     * 按照ID删除一个Metas对象
+     * @param id Metas的ID
+     * @throws GeneralException
+     */
+    @Override
+    public void delete(String id) throws GeneralException {
+        try {
+            metasRepository.deleteById(id);
+        } catch (Exception e){
+            throw new GeneralException(CodeMessageInfo.DELETE_FAIL);
+        }
     }
 
 }

@@ -1,5 +1,8 @@
 package cn.itdeer.modules.admin.system.controller;
 
+import cn.itdeer.common.base.BaseController;
+import cn.itdeer.common.message.Message;
+import cn.itdeer.common.exception.general.GeneralException;
 import cn.itdeer.modules.admin.system.entity.Metas;
 import cn.itdeer.modules.admin.system.service.MetasService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Description : 系统管理(页面信息)Web层
@@ -20,26 +24,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(name = "/admin/system")
-public class MetasController {
+public class MetasController extends BaseController {
 
     @Autowired
     private MetasService metasService;
 
+    /**
+     * 按照ID查询Metas的信息
+     * @param id Metas的ID
+     * @param model 页面信息Model
+     * @return 返回页面地址
+     * @throws GeneralException 抛出统一异常
+     */
     @GetMapping(name = "/metas/{id}")
-    public String findById(@PathVariable String id, Model model){
-        System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKKkk");
+    public String findById(@PathVariable String id, Model model) throws GeneralException{
+        checkParameter("id",id);
+
         Metas metas = metasService.findById(id);
         model.addAttribute("metas",metas);
-        return "";
+        return "/admin/system/show_metas";
     }
 
-
+    /**
+     * 保存一个Metas对象
+     * @param metas 信息对象
+     * @param ra 重定向属性
+     * @return 列表页面
+     * @throws GeneralException 抛出统一异常
+     */
     @PostMapping(name = "/metas/save")
-    public String save(Metas metas,Model model){
+    public String save(Metas metas,RedirectAttributes ra) throws GeneralException{
 
         metasService.save(metas);
+        addMessage(ra,Message.METAS_SAVE_SUCCESS);
 
-        return null;
+        return "redirect:/admin/system/metas/list";
+    }
+
+    /**
+     * 按照ID删除Metas
+     * @param id Metas的ID
+     * @param ra 重定向属性
+     * @return 列表页面
+     */
+    @GetMapping(value = "/delete/{id}")
+    public String delete(@PathVariable("id") String id,RedirectAttributes ra){
+        checkParameter("id",id);
+
+        metasService.delete(id);
+        addMessage(ra,Message.METAS_DELETE_FAIL);
+
+        return "redirect:/admin/system/metas/list";
     }
 
 }
