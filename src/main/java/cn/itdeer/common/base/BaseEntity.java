@@ -1,6 +1,7 @@
 package cn.itdeer.common.base;
 
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import java.io.Serializable;
  */
 
 @Data
+@ToString
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 

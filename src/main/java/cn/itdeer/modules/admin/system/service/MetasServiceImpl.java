@@ -7,6 +7,8 @@ import cn.itdeer.modules.admin.system.repository.MetasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Description : 系统管理(页面信息)服务层实现
  * PackageName : cn.itdeer.modules.admin.system.service
@@ -22,6 +24,16 @@ public class MetasServiceImpl implements MetasService{
     private MetasRepository metasRepository;
 
     /**
+     * 查询所有Metas
+     * @return 一个Metas的列表
+     * @throws GeneralException 统一异常处理
+     */
+    @Override
+    public List<Metas> findAll() throws GeneralException {
+        return metasRepository.findAll();
+    }
+
+    /**
      * @param id Metas的ID
      * @return 根据Metas ID查询出来的Metas对象
      */
@@ -35,8 +47,8 @@ public class MetasServiceImpl implements MetasService{
      * @param metas 一个Metas的对象信息
      */
     @Override
-    public void save(Metas metas) {
-        metasRepository.save(metas);
+    public Metas save(Metas metas) {
+       return metasRepository.save(metas);
     }
 
     /**
