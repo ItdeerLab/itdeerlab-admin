@@ -8,10 +8,7 @@ import cn.itdeer.modules.admin.system.service.MetasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -23,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 
 @Controller
-@RequestMapping(name = "/admin/system")
+@RequestMapping(name = "/admin/system/metas")
 public class MetasController extends BaseController {
 
     @Autowired
@@ -36,13 +33,13 @@ public class MetasController extends BaseController {
      * @return 返回页面地址
      * @throws GeneralException 抛出统一异常
      */
-    @GetMapping(name = "/metas/{id}")
+    @GetMapping(name = "/findById/{id}")
     public String findById(@PathVariable String id, Model model) throws GeneralException{
         checkParameter("id",id);
 
         Metas metas = metasService.findById(id);
         model.addAttribute("metas",metas);
-        return "/admin/system/show_metas";
+        return "/admin/system/metas/show_metas";
     }
 
     /**
@@ -52,7 +49,7 @@ public class MetasController extends BaseController {
      * @return 列表页面
      * @throws GeneralException 抛出统一异常
      */
-    @PostMapping(name = "/metas/save")
+    @PostMapping(name = "/save")
     public String save(Metas metas,RedirectAttributes ra) throws GeneralException{
 
         metasService.save(metas);
@@ -67,8 +64,8 @@ public class MetasController extends BaseController {
      * @param ra 重定向属性
      * @return 列表页面
      */
-    @GetMapping(value = "/delete/{id}")
-    public String delete(@PathVariable("id") String id,RedirectAttributes ra){
+    @DeleteMapping(value = "/delete/{id}")
+    public String delete(@PathVariable("id") String id,RedirectAttributes ra) throws GeneralException{
         checkParameter("id",id);
 
         metasService.delete(id);

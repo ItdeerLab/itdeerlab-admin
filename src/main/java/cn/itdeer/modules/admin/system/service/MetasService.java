@@ -12,6 +12,7 @@ import java.util.List;
  * CreatorName : itdeer.cn
  * CreateTime : 18-6-15/上午9:51
  */
+
 public interface MetasService {
 
 
@@ -33,6 +34,7 @@ public interface MetasService {
     /**
      * 保存一个Metas对象
      * @param metas 一个Metas的对象信息
+     * @return 返回保存的Metas对象
      * @throws GeneralException 统一异常处理
      */
     Metas save(Metas metas) throws GeneralException;
