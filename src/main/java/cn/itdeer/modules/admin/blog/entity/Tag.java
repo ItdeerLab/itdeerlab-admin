@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Description :
+ * Description : 博客管理(Tag标签)实体类
  * PackageName : cn.itdeer.modules.admin.blog.entity
  * ProjectName : itdeerlab-admin
  * CreatorName : itdeer.cn
