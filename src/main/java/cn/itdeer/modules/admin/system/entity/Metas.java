@@ -4,6 +4,7 @@ import cn.itdeer.common.base.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -22,27 +23,31 @@ import javax.persistence.Table;
 @Table(name = "system_metas")
 public class Metas extends BaseEntity {
 
-    @Column(name = "metas_type")
-    private String type;                            //所属
+    @Basic
+    @Column(name = "type",columnDefinition="varchar(20) COMMENT '所属'")
+    private String type;
 
-    @Column(name = "metas_keywords")
-    private String keywords;                        //关键词
+    @Basic
+    @Column(name = "keywords",columnDefinition="varchar(200) COMMENT '关键词'")
+    private String keywords;
 
-    @Column(name = "metas_description")
-    private String description;                     //描述
+    @Basic
+    @Column(name = "picture_id",columnDefinition="varchar(50) COMMENT 'ico图片ID'")
+    private String pictureId;
 
-    @Column(name = "metas_pictureid")
-    private String pictureId;                       //ico图片ID
+    @Basic
+    @Column(name = "picture_url",columnDefinition="varchar(100) COMMENT 'ico图片地址'")
+    private String pictureUrl;
 
-    @Column(name = "metas_pictureurl")
-    private String pictureUrl;                      //ico图片地址
+    @Basic
+    @Column(name = "title",columnDefinition="varchar(100) COMMENT '标题'")
+    private String title;
 
-    @Column(name = "metas_title")
-    private String title;                           //标题
+    @Basic
+    @Column(name = "copy",columnDefinition="varchar(100) COMMENT 'copy号'")
+    private String copy;
 
-    @Column(name = "metas_copy")
-    private String copy;                            //copy号
-
-    @Column(name = "metas_icp")
-    private String icp;                             //备案号
+    @Basic
+    @Column(name = "icp",columnDefinition="varchar(100) COMMENT '备案号'")
+    private String icp;
 }

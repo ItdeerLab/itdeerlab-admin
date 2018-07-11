@@ -37,7 +37,7 @@ public class MetasServiceTest {
 
         metas.setType("Index");
         metas.setKeywords("Java BigData");
-        metas.setDescription("页面的搜索关键信息");
+        metas.setRemarks("页面的搜索关键信息");
         metas.setPictureId("123");
         metas.setPictureUrl("http://itdeer.cn/pic/itdeer.ico");
         metas.setTitle("Itdeer的博客");

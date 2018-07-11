@@ -1,12 +1,11 @@
 package cn.itdeer.modules.admin.system.entity;
 
-import cn.itdeer.common.base.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Description : 系统管理(异常记录)实体类
@@ -20,28 +19,41 @@ import javax.persistence.Table;
 @Entity
 @ToString
 @Table(name = "system_exceptionrecord")
-public class ExceptionRecord extends BaseEntity{
+public class ExceptionRecord  implements Serializable {
 
-    @Column(name = "exception_time")
-    private Long time;                            //日志记录时间
+    @Id
+    @GeneratedValue(generator="id")
+    @GenericGenerator(name="id", strategy="uuid")
+    @Column(name = "id",columnDefinition="varchar(50) COMMENT 'ID'")
+    private String id;
 
-    @Column(name = "exception_requestmethod")
-    private String requestMethod;                 //请求的方法(Get Post Put等)
+    @Basic
+    @Column(name = "time",columnDefinition="INTEGER COMMENT '日志记录时间'")
+    private Long time;
 
-    @Column(name = "exception_accessmethod")
-    private String accessMethod;                  //请求系统的方法(提供请求的方法)
+    @Basic
+    @Column(name = "request_method",columnDefinition="varchar(20) COMMENT '请求的方法(Get Post Put等)'")
+    private String requestMethod;
 
-    @Column(name = "exception_url")
-    private String url;                           //请求地址
+    @Basic
+    @Column(name = "access_method",columnDefinition="varchar(50) COMMENT '请求系统的方法(提供请求的方法)'")
+    private String accessMethod;
 
-    @Column(name = "exception_ip")
-    private String ip;                            //请求者IP
+    @Basic
+    @Column(name = "url",columnDefinition="varchar(100) COMMENT '请求地址'")
+    private String url;
 
-    @Column(name = "exception_type")
-    private String type;                          //请求类型（RestAPI,通常API）
+    @Basic
+    @Column(name = "ip",columnDefinition="varchar(50) COMMENT '请求者IP'")
+    private String ip;
 
-    @Column(name = "exception_status")
-    private String status;                        //日志状态
+    @Basic
+    @Column(name = "type",columnDefinition="varchar(50) COMMENT '请求类型（RestAPI,通常API）'")
+    private String type;
+
+    @Basic
+    @Column(name = "status",columnDefinition="varchar(10) COMMENT '日志状态'")
+    private String status;
 
     /**
      * 全部参数的构造函数，方便记录添加

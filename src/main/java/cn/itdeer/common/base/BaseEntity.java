@@ -4,10 +4,9 @@ import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Description : 基础Entity
@@ -23,8 +22,20 @@ import java.io.Serializable;
 public abstract class BaseEntity implements Serializable {
 
     @Id
-    @GenericGenerator(name="id", strategy="uuid")
     @GeneratedValue(generator="id")
+    @GenericGenerator(name="id", strategy="uuid")
+    @Column(name = "id",columnDefinition="varchar(50) COMMENT 'ID编号'")
     private String id;
 
+    @Basic
+    @Column(name = "create_time",columnDefinition="INTEGER COMMENT '创建时间'")
+    private Long createTime;
+
+    @Basic
+    @Column(name = "update_time",columnDefinition="INTEGER COMMENT '更新时间'")
+    private Long updateTime;
+
+    @Basic
+    @Column(name = "remarks",columnDefinition="varchar(200) COMMENT '描述'")
+    private String remarks;
 }

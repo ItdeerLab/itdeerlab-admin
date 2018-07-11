@@ -20,7 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 
 @Controller
-@RequestMapping(name = "/admin/system/metas")
+@RequestMapping(value = "/admin/system/metas")
 public class MetasController extends BaseController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class MetasController extends BaseController {
      * @return 返回页面地址
      * @throws GeneralException 抛出统一异常
      */
-    @GetMapping(name = "/findById/{id}")
+    @GetMapping(value = "/findById/{id}")
     public String findById(@PathVariable String id, Model model) throws GeneralException{
         checkParameter("id",id);
 
@@ -49,7 +49,7 @@ public class MetasController extends BaseController {
      * @return 列表页面
      * @throws GeneralException 抛出统一异常
      */
-    @PostMapping(name = "/save")
+    @PostMapping(value = "/save")
     public String save(Metas metas,RedirectAttributes ra) throws GeneralException{
 
         metasService.save(metas);
@@ -64,7 +64,7 @@ public class MetasController extends BaseController {
      * @param ra 重定向属性
      * @return 列表页面
      */
-    @DeleteMapping(value = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable("id") String id,RedirectAttributes ra) throws GeneralException{
         checkParameter("id",id);
 

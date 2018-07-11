@@ -1,12 +1,11 @@
 package cn.itdeer.modules.admin.system.entity;
 
-import cn.itdeer.common.base.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Description : 系统管理(访问记录)实体类
@@ -20,24 +19,36 @@ import javax.persistence.Table;
 @Entity
 @ToString
 @Table(name = "system_accessrecord")
-public class AccessRecord extends BaseEntity{
+public class AccessRecord implements Serializable {
 
-    @Column(name = "access_url")
+    @Id
+    @GeneratedValue(generator="id")
+    @GenericGenerator(name="id", strategy="uuid")
+    @Column(name = "id",columnDefinition="varchar(50) COMMENT 'ID'")
+    private String id;
+
+    @Basic
+    @Column(name = "url",columnDefinition="varchar(100) COMMENT '请求路径'")
     private String url;
 
-    @Column(name = "access_http_method")
+    @Basic
+    @Column(name = "http_method",columnDefinition="varchar(20) COMMENT '请求方式'")
     private String httpMethod;
 
-    @Column(name = "access_ip")
+    @Basic
+    @Column(name = "ip",columnDefinition="varchar(50) COMMENT '请求IP'")
     private String ip;
 
-    @Column(name = "access_class_method")
+    @Basic
+    @Column(name = "class_method",columnDefinition="varchar(100) COMMENT '请求方法名'")
     private String classMethod;
 
-    @Column(name = "access_args")
+    @Basic
+    @Column(name = "args",columnDefinition="varchar(100) COMMENT '请求参数'")
     private String args;
 
-    @Column(name = "access_time")
+    @Basic
+    @Column(name = "time",columnDefinition="INTEGER COMMENT '请求时间'")
     private Long time;
 
     /**

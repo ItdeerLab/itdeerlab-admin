@@ -1,4 +1,4 @@
-package cn.itdeer.modules.admin.user.controller;
+package cn.itdeer.modules.admin.security.controller;
 
 import cn.itdeer.common.base.BaseController;
 import org.springframework.stereotype.Controller;

@@ -4,10 +4,10 @@ import cn.itdeer.common.base.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Date;
 
 /**
  * Description : 系统管理(主题信息)实体类
@@ -23,29 +23,24 @@ import java.util.Date;
 @Table(name = "system_themes")
 public class Themes extends BaseEntity {
 
-    @Column(name = "themes_name")
+    @Basic
+    @Column(name = "name",columnDefinition="varchar(50) COMMENT '主题名称'")
     private String name;
 
-    @Column(name = "themes_createtime")
-    private Long createtime = new Date().getTime();
+    @Basic
+    @Column(name = "status",columnDefinition="BIT COMMENT '主题的当前状态'")
+    private Boolean status;
 
-    @Column(name = "themes_updatetime")
-    private Long updatetime = new Date().getTime();
+    @Basic
+    @Column(name = "logo_id",columnDefinition="varchar(50) COMMENT '主题logoID'")
+    private String logoId;
 
-    @Column(name = "themes_status")
-    private boolean status;
+    @Basic
+    @Column(name = "user_id",columnDefinition="varchar(50) COMMENT '用户ID'")
+    private String userId;
 
-    @Column(name = "themes_describe")
-    private String describe;
-
-    @Column(name = "themes_logo")
-    private String logo;
-
-    @Column(name = "themes_userid")
-    private String userid;
-
-    @Column(name = "themes_ifdefault")
-    private Boolean ifdefault;
-
+    @Basic
+    @Column(name = "if_default",columnDefinition="BIT COMMENT '是否为默认主题'")
+    private Boolean ifDefault;
 
 }

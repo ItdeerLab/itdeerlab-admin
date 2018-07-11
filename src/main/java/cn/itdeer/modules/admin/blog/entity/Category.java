@@ -3,10 +3,11 @@ package cn.itdeer.modules.admin.blog.entity;
 import cn.itdeer.common.base.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
+
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
-import java.util.Date;
 
 /**
  * Description : 博客管理(Category分类)实体类
@@ -22,21 +23,19 @@ import java.util.Date;
 @Table(name = "blog_category")
 public class Category extends BaseEntity{
 
-    @Column(name = "category_name")
-    private String name;                             //类别名称
+    @Basic
+    @Column(name = "name",columnDefinition="varchar(20) COMMENT '类别名称'")
+    private String name;
 
-    @Column(name = "category_createdate")
-    private Long createDate = new Date().getTime();  //创建时间
+    @Basic
+    @Column(name = "user_id",columnDefinition="varchar(50) COMMENT '用户ID'")
+    private String userId;
 
-    @Column(name = "category_editdate")
-    private Long editDate;                          //修改时间
+    @Basic
+    @Column(name = "user_name",columnDefinition="varchar(50) COMMENT '用户名称'")
+    private String userName;
 
-    @Column(name = "category_userid")
-    private String userId;                          //用户ID
-
-    @Column(name = "category_username")
-    private String userName;                        //用户名称
-
-    @Column(name = "category_description")
-    private String description;                     //描述
+    @Basic
+    @Column(name = "description",columnDefinition="varchar(50) COMMENT '描述'")
+    private String description;
 }

@@ -1,7 +1,7 @@
-package cn.itdeer.modules.admin.user.rest;
+package cn.itdeer.modules.admin.security.rest;
 
-import cn.itdeer.modules.admin.user.entity.User;
-import cn.itdeer.modules.admin.user.service.UserService;
+import cn.itdeer.modules.admin.security.entity.User;
+import cn.itdeer.modules.admin.security.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

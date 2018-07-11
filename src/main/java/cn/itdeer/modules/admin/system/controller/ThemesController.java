@@ -22,13 +22,13 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping(name = "/admin/system/themes")
+@RequestMapping(value = "/admin/system/themes")
 public class ThemesController extends BaseController{
 
     @Autowired
     private ThemesService themesService;
 
-    @GetMapping(name = "/findAll")
+    @GetMapping(value = "/findAll")
     public String findAll(Model model) throws GeneralException{
 
         List<Themes> themes_list = themesService.findAll();
@@ -37,7 +37,7 @@ public class ThemesController extends BaseController{
         return "/admin/system/themes/list";
     }
 
-    @GetMapping(name = "/findById/{id}")
+    @GetMapping(value = "/findById/{id}")
     public String findById(@PathVariable String id, Model model) throws GeneralException{
         checkParameter("id",id);
 
@@ -47,7 +47,7 @@ public class ThemesController extends BaseController{
         return "/admin/system/themes/show_metas";
     }
 
-    @PostMapping(name = "/save")
+    @PostMapping(value = "/save")
     public String save(Themes themes,RedirectAttributes ra) throws GeneralException{
 
         themesService.save(themes);
@@ -56,7 +56,7 @@ public class ThemesController extends BaseController{
         return "redirect:/admin/system/metas/list";
     }
 
-    @DeleteMapping(name = "/delete/{id}")
+    @GetMapping(value = "/delete/{id}")
     public String delete(@PathVariable("id") String id, RedirectAttributes ra) throws GeneralException{
         checkParameter("id",id);
 
@@ -66,7 +66,7 @@ public class ThemesController extends BaseController{
         return "redirect:/admin/system/themes/list";
     }
 
-    @GetMapping(name = "/form")
+    @GetMapping(value = "/form")
     public String form() throws GeneralException{
         return "/admin/system/themes/show_themes";
     }

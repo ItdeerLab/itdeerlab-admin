@@ -1,6 +1,6 @@
-package cn.itdeer.modules.admin.user.repository;
+package cn.itdeer.modules.admin.security.repository;
 
-import cn.itdeer.modules.admin.user.entity.User;
+import cn.itdeer.modules.admin.security.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

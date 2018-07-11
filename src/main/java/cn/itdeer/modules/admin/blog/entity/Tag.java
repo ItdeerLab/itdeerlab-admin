@@ -4,6 +4,8 @@ import cn.itdeer.common.base.BaseEntity;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -20,5 +22,13 @@ import javax.persistence.Table;
 @ToString
 @Table(name = "blog_tag")
 public class Tag extends BaseEntity {
+
+    @Basic
+    @Column(name = "name",columnDefinition="varchar(20) COMMENT '标签名称'")
+    private String name;
+
+    @Basic
+    @Column(name = "description",columnDefinition="varchar(50) COMMENT '描述'")
+    private String description;
 
 }
