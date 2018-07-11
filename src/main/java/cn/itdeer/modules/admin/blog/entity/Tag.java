@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.blog.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -24,11 +25,7 @@ import javax.persistence.Table;
 public class Tag extends BaseEntity {
 
     @Basic
-    @Column(name = "name",columnDefinition="varchar(20) COMMENT '标签名称'")
+    @Column(name = "name",columnDefinition = BaseExplain.TAG_NAME)
     private String name;
-
-    @Basic
-    @Column(name = "description",columnDefinition="varchar(50) COMMENT '描述'")
-    private String description;
 
 }

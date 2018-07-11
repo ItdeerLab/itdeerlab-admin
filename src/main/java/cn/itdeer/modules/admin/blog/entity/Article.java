@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.blog.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -24,62 +25,62 @@ import javax.persistence.Column;
 public class Article extends BaseEntity {
 
     @Basic
-    @Column(name = "title",columnDefinition="varchar(50) COMMENT '文章标题'")
+    @Column(name = "title",columnDefinition = BaseExplain.ARTICLE_TITLE)
     private String title;
 
     @Basic
-    @Column(name = "text_content",columnDefinition="TEXT COMMENT 'TEXT内容'")
+    @Column(name = "text_content",columnDefinition = BaseExplain.ARTICLE_TEXT_CONTENT)
     private String textContent;
 
     @Basic
-    @Column(name = "html_content",columnDefinition="TEXT COMMENT 'HTML内容'")
+    @Column(name = "html_content",columnDefinition = BaseExplain.ARTICLE_HTML_CONTENT)
     private String htmlContent;
 
     @Basic
-    @Column(name = "release_date",columnDefinition="INTEGER COMMENT '发布时间'")
+    @Column(name = "release_date",columnDefinition = BaseExplain.ARTICLE_RELEASE_DATE)
     private Long releaseDate;
 
     @Basic
-    @Column(name = "release_state",columnDefinition="BIT COMMENT '发布状态'")
+    @Column(name = "release_state",columnDefinition = BaseExplain.ARTICLE_RELEASE_STATE)
     private Boolean releaseState;
 
     @Basic
-    @Column(name = "if_comment",columnDefinition="BIT COMMENT '是否允许评论'")
+    @Column(name = "if_comment",columnDefinition = BaseExplain.ARTICLE_IF_COMMENT)
     private Boolean ifComment;
 
     @Basic
-    @Column(name = "user_id",columnDefinition="varchar(50) COMMENT '用户ID'")
+    @Column(name = "user_id",columnDefinition = BaseExplain.ARTICLE_USER_ID)
     private String userId;
 
     @Basic
-    @Column(name = "user_name",columnDefinition="varchar(50) COMMENT '用户名称'")
+    @Column(name = "user_name",columnDefinition = BaseExplain.ARTICLE_USER_NAME)
     private String userName;
 
     @Basic
-    @Column(name = "picture_id",columnDefinition="varchar(50) COMMENT '封面图片ID'")
+    @Column(name = "picture_id",columnDefinition = BaseExplain.ARTICLE_PICTURE_ID)
     private String pictureId;
 
     @Basic
-    @Column(name = "picture_url",columnDefinition="varchar(100) COMMENT '封面图片地址'")
+    @Column(name = "picture_url",columnDefinition = BaseExplain.ARTICLE_PICTURE_URL)
     private String pictureUrl;
 
     @Basic
-    @Column(name = "comment_num",columnDefinition="INTEGER COMMENT '评论数'")
+    @Column(name = "comment_num",columnDefinition = BaseExplain.ARTICLE_COMMENT_NUM)
     private Integer commentNum;
 
     @Basic
-    @Column(name = "hits",columnDefinition="INTEGER COMMENT '点击数'")
+    @Column(name = "hits",columnDefinition = BaseExplain.ARTICLE_HITS)
     private Integer hits;
 
     @Basic
-    @Column(name = "type",columnDefinition="varchar(50) COMMENT '文章类型'")
+    @Column(name = "type",columnDefinition = BaseExplain.ARTICLE_TYPE)
     private String type;
 
     @Basic
-    @Column(name = "category",columnDefinition="varchar(50) COMMENT '文章类别'")
+    @Column(name = "category",columnDefinition = BaseExplain.ARTICLE_CATEGORY)
     private String category;
 
     @Basic
-    @Column(name = "tags",columnDefinition="varchar(200) COMMENT '文章标签'")
+    @Column(name = "tags",columnDefinition = BaseExplain.ARTICLE_TAGS)
     private String tags;
 }

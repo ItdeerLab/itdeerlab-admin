@@ -24,18 +24,18 @@ public abstract class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(generator="id")
     @GenericGenerator(name="id", strategy="uuid")
-    @Column(name = "id",columnDefinition="varchar(50) COMMENT 'ID编号'")
+    @Column(name = "id",columnDefinition = BaseExplain.BASE_ID)
     private String id;
 
     @Basic
-    @Column(name = "create_time",columnDefinition="INTEGER COMMENT '创建时间'")
+    @Column(name = "create_time",columnDefinition = BaseExplain.BASE_CREATE_TIME)
     private Long createTime;
 
     @Basic
-    @Column(name = "update_time",columnDefinition="INTEGER COMMENT '更新时间'")
+    @Column(name = "update_time",columnDefinition = BaseExplain.BASE_UPDATE_TIME)
     private Long updateTime;
 
     @Basic
-    @Column(name = "remarks",columnDefinition="varchar(200) COMMENT '描述'")
+    @Column(name = "remarks",columnDefinition = BaseExplain.BASE_REMARKS)
     private String remarks;
 }

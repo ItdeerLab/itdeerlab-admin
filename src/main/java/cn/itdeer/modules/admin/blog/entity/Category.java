@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.blog.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -24,18 +25,15 @@ import javax.persistence.Column;
 public class Category extends BaseEntity{
 
     @Basic
-    @Column(name = "name",columnDefinition="varchar(20) COMMENT '类别名称'")
+    @Column(name = "name",columnDefinition = BaseExplain.CATEGORY_NAME)
     private String name;
 
     @Basic
-    @Column(name = "user_id",columnDefinition="varchar(50) COMMENT '用户ID'")
+    @Column(name = "user_id",columnDefinition = BaseExplain.CATEGORY_USER_ID)
     private String userId;
 
     @Basic
-    @Column(name = "user_name",columnDefinition="varchar(50) COMMENT '用户名称'")
+    @Column(name = "user_name",columnDefinition = BaseExplain.CATEGORY_USER_NAME)
     private String userName;
 
-    @Basic
-    @Column(name = "description",columnDefinition="varchar(50) COMMENT '描述'")
-    private String description;
 }
