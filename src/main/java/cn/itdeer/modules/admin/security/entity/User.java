@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.security.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -25,88 +26,88 @@ import javax.validation.constraints.Email;
 public class User extends BaseEntity{
 
     @Basic
-    @Column(name = "name",columnDefinition="varchar(50) COMMENT '用户名'")
+    @Column(name = "name",columnDefinition = BaseExplain.USER_NAME)
     private String name;
 
     @Basic
-    @Column(name = "password",columnDefinition="varchar(50) COMMENT '密码'")
+    @Column(name = "password",columnDefinition = BaseExplain.USER_PASSWORD)
     private String password;
 
     @Basic
     @Email
-    @Column(name = "email",columnDefinition="varchar(50) COMMENT '邮箱'")
+    @Column(name = "email",columnDefinition = BaseExplain.USER_EMAIL)
     private String email;
 
     @Basic
-    @Column(name = "gender",columnDefinition="varchar(10) COMMENT '性别'")
+    @Column(name = "gender",columnDefinition = BaseExplain.USER_GENDER)
     private String gender;
 
     @Basic
-    @Column(name = "mobile",columnDefinition="varchar(20) COMMENT '手机号码'")
+    @Column(name = "mobile",columnDefinition = BaseExplain.USER_MOBILE)
     private String mobile;
 
     @Basic
-    @Column(name = "birthday",columnDefinition="varchar(20) COMMENT '生日'")
+    @Column(name = "birthday",columnDefinition = BaseExplain.USER_BIRTHDAY)
     private String birthday;
 
     @Basic
-    @Column(name = "nick_name",columnDefinition="varchar(50) COMMENT '昵称'")
+    @Column(name = "nick_name",columnDefinition = BaseExplain.USER_NICK_NAME)
     private String nickName;
 
     @Basic
-    @Column(name = "super_user",columnDefinition="BIT COMMENT '是否是超级管理员'")
+    @Column(name = "super_user",columnDefinition = BaseExplain.USER_SUPER_USER)
     private Boolean superUser;
 
     @Basic
-    @Column(name = "if_login",columnDefinition="BIT COMMENT '是否允许登录'")
+    @Column(name = "if_login",columnDefinition = BaseExplain.USER_IF_LOGIN)
     private Boolean ifLogin;
 
     @Basic
-    @Column(name = "if_online",columnDefinition="BIT COMMENT '是否在线'")
+    @Column(name = "if_online",columnDefinition = BaseExplain.USER_IF_ONLINE)
     private Boolean ifOnline;
 
     @Basic
-    @Column(name = "active_status",columnDefinition="BIT COMMENT '激活状态'")
+    @Column(name = "active_status",columnDefinition = BaseExplain.USER_ACTIVE_STATUS)
     private Boolean activeStatus;
 
     @Basic
-    @Column(name = "last_login",columnDefinition="INTEGER COMMENT '最后登录时间'")
+    @Column(name = "last_login",columnDefinition = BaseExplain.USER_LAST_LOGIN)
     private Long lastLogin;
 
     @Basic
-    @Column(name = "last_login_ip",columnDefinition="varchar(20) COMMENT '最后登录IP'")
+    @Column(name = "last_login_ip",columnDefinition = BaseExplain.USER_LAST_LOGIN_IP)
     private String lastLoginIp;
 
     @Basic
-    @Column(name = "picture_id",columnDefinition="varchar(50) COMMENT '头像图片ID'")
+    @Column(name = "picture_id",columnDefinition = BaseExplain.USER_PICTURE_ID)
     private String pictureId;
 
     @Basic
-    @Column(name = "picture_url",columnDefinition="varchar(100) COMMENT '头像图片地址'")
+    @Column(name = "picture_url",columnDefinition = BaseExplain.USER_PICTURE_URL)
     private String pictureUrl;
 
     @Basic
-    @Column(name = "province",columnDefinition="varchar(50) COMMENT '省份'")
+    @Column(name = "province",columnDefinition = BaseExplain.USER_PROVINCE)
     private String province;
 
     @Basic
-    @Column(name = "city",columnDefinition="varchar(50) COMMENT '城市'")
+    @Column(name = "city",columnDefinition = BaseExplain.USER_CITY)
     private String city;
 
     @Basic
-    @Column(name = "home_town",columnDefinition="varchar(200) COMMENT '家乡地址'")
+    @Column(name = "home_town",columnDefinition = BaseExplain.USER_HOME_TOWN)
     private String homeTown;
 
     @Basic
-    @Column(name = "dept_id",columnDefinition="varchar(200) COMMENT '部门ID'")
+    @Column(name = "dept_id",columnDefinition = BaseExplain.USER_DEPT_ID)
     private String deptId;
 
     @Basic
-    @Column(name = "dept_name",columnDefinition="varchar(50) COMMENT '部门名称'")
+    @Column(name = "dept_name",columnDefinition = BaseExplain.USER_DEPT_NAME)
     private String deptName;
 
     @Basic
-    @Column(name = "address",columnDefinition="varchar(200) COMMENT '现在住址'")
+    @Column(name = "address",columnDefinition = BaseExplain.USER_ADDRESS)
     private String address;
 
 }

@@ -1,5 +1,6 @@
 package cn.itdeer.modules.admin.system.entity;
 
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,35 +25,35 @@ public class ExceptionRecord  implements Serializable {
     @Id
     @GeneratedValue(generator="id")
     @GenericGenerator(name="id", strategy="uuid")
-    @Column(name = "id",columnDefinition="varchar(50) COMMENT 'ID'")
+    @Column(name = "id",columnDefinition = BaseExplain.EXCEPTION_RECORRD_ID)
     private String id;
 
     @Basic
-    @Column(name = "time",columnDefinition="INTEGER COMMENT '日志记录时间'")
+    @Column(name = "time",columnDefinition = BaseExplain.EXCEPTION_RECORRD_TIME)
     private Long time;
 
     @Basic
-    @Column(name = "request_method",columnDefinition="varchar(20) COMMENT '请求的方法(Get Post Put等)'")
+    @Column(name = "request_method",columnDefinition = BaseExplain.EXCEPTION_RECORRD_REQUEST_METHOD)
     private String requestMethod;
 
     @Basic
-    @Column(name = "access_method",columnDefinition="varchar(50) COMMENT '请求系统的方法(提供请求的方法)'")
+    @Column(name = "access_method",columnDefinition = BaseExplain.EXCEPTION_RECORRD_ACCESS_METHOD)
     private String accessMethod;
 
     @Basic
-    @Column(name = "url",columnDefinition="varchar(100) COMMENT '请求地址'")
+    @Column(name = "url",columnDefinition = BaseExplain.EXCEPTION_RECORRD_URL)
     private String url;
 
     @Basic
-    @Column(name = "ip",columnDefinition="varchar(50) COMMENT '请求者IP'")
+    @Column(name = "ip",columnDefinition = BaseExplain.EXCEPTION_RECORRD_IP)
     private String ip;
 
     @Basic
-    @Column(name = "type",columnDefinition="varchar(50) COMMENT '请求类型（RestAPI,通常API）'")
+    @Column(name = "type",columnDefinition = BaseExplain.EXCEPTION_RECORRD_TYPE)
     private String type;
 
     @Basic
-    @Column(name = "status",columnDefinition="varchar(10) COMMENT '日志状态'")
+    @Column(name = "status",columnDefinition = BaseExplain.EXCEPTION_RECORRD_STATUS)
     private String status;
 
     /**

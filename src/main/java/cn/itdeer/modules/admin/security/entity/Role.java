@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.security.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -23,19 +24,19 @@ import java.util.Set;
 public class Role extends BaseEntity {
 
     @Basic
-    @Column(name = "role_name",columnDefinition="varchar(50) COMMENT '角色名称'")
-    private String roleName;
+    @Column(name = "name",columnDefinition = BaseExplain.ROLE_NAME)
+    private String name;
 
     @Basic
-    @Column(name = "if_able",columnDefinition="BIT COMMENT '是否是可用'")
+    @Column(name = "if_able",columnDefinition = BaseExplain.ROLE_IF_ABLE)
     private Boolean ifAble;
 
     @Basic
-    @Column(name = "dept_id",columnDefinition="varchar(50) COMMENT '部门ID'")
+    @Column(name = "dept_id",columnDefinition = BaseExplain.ROLE_DEPT_ID)
     private String deptId;
 
     @Basic
-    @Column(name = "dept_name",columnDefinition="varchar(50) COMMENT '部门名称'")
+    @Column(name = "dept_name",columnDefinition = BaseExplain.ROLE_DEPT_NAME)
     private String deptName;
 
 

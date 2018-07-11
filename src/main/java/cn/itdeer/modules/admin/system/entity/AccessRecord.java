@@ -1,5 +1,6 @@
 package cn.itdeer.modules.admin.system.entity;
 
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
@@ -24,31 +25,31 @@ public class AccessRecord implements Serializable {
     @Id
     @GeneratedValue(generator="id")
     @GenericGenerator(name="id", strategy="uuid")
-    @Column(name = "id",columnDefinition="varchar(50) COMMENT 'ID'")
+    @Column(name = "id",columnDefinition = BaseExplain.ACCESS_RECORD_ID)
     private String id;
 
     @Basic
-    @Column(name = "url",columnDefinition="varchar(100) COMMENT '请求路径'")
+    @Column(name = "url",columnDefinition = BaseExplain.ACCESS_RECORD_URL)
     private String url;
 
     @Basic
-    @Column(name = "http_method",columnDefinition="varchar(20) COMMENT '请求方式'")
+    @Column(name = "http_method",columnDefinition = BaseExplain.ACCESS_RECORD_HTTP_METHOD)
     private String httpMethod;
 
     @Basic
-    @Column(name = "ip",columnDefinition="varchar(50) COMMENT '请求IP'")
+    @Column(name = "ip",columnDefinition = BaseExplain.ACCESS_RECORD_IP)
     private String ip;
 
     @Basic
-    @Column(name = "class_method",columnDefinition="varchar(100) COMMENT '请求方法名'")
+    @Column(name = "class_method",columnDefinition = BaseExplain.ACCESS_RECORD_CLASS_METHOD)
     private String classMethod;
 
     @Basic
-    @Column(name = "args",columnDefinition="varchar(100) COMMENT '请求参数'")
+    @Column(name = "args",columnDefinition = BaseExplain.ACCESS_RECORD_ARGS)
     private String args;
 
     @Basic
-    @Column(name = "time",columnDefinition="INTEGER COMMENT '请求时间'")
+    @Column(name = "time",columnDefinition = BaseExplain.ACCESS_RECORD_TIME)
     private Long time;
 
     /**

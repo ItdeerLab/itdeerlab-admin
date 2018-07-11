@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.security.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -23,43 +24,43 @@ import java.util.Set;
 public class Menu extends BaseEntity {
 
     @Basic
-    @Column(name = "parent_id",columnDefinition="varchar(10) COMMENT '父级菜单ID'")
+    @Column(name = "parent_id",columnDefinition = BaseExplain.MENU_PARENT_ID)
     private String parentId;
 
     @Basic
-    @Column(name = "parent_name",columnDefinition="varchar(20) COMMENT '父级菜单名称'")
+    @Column(name = "parent_name",columnDefinition = BaseExplain.MENU_PARENT_NAME)
     private String parentName;
 
     @Basic
-    @Column(name = "menu_name",columnDefinition="varchar(50) COMMENT '菜单名称'")
-    private String menuName;
+    @Column(name = "name",columnDefinition = BaseExplain.MENU_NAME)
+    private String name;
 
     @Basic
-    @Column(name = "menu_url",columnDefinition="varchar(100) COMMENT '菜单链接'")
-    private String menuUrl;
+    @Column(name = "url",columnDefinition = BaseExplain.MENU_URL)
+    private String url;
 
     @Basic
-    @Column(name = "target",columnDefinition="varchar(10) COMMENT '目标'")
+    @Column(name = "target",columnDefinition = BaseExplain.MENU_TARGET)
     private String target;
 
     @Basic
-    @Column(name = "icon",columnDefinition="varchar(50) COMMENT '图标'")
+    @Column(name = "icon",columnDefinition = BaseExplain.MENU_ICON)
     private String icon;
 
     @Basic
-    @Column(name = "type",columnDefinition="varchar(10) COMMENT '0：目录1：菜单2：按钮'")
+    @Column(name = "type",columnDefinition = BaseExplain.MENU_TYPE)
     private String type;
 
     @Basic
-    @Column(name = "sort",columnDefinition="INTEGER COMMENT '排序'")
+    @Column(name = "sort",columnDefinition = BaseExplain.MENU_SORT)
     private Integer sort;
 
     @Basic
-    @Column(name = "open",columnDefinition="BIT COMMENT 'ztree是否打开'")
+    @Column(name = "open",columnDefinition = BaseExplain.MENU_OPEN)
     private Boolean open;
 
     @Basic
-    @Column(name = "is_show",columnDefinition="BIT COMMENT '是否在菜单中显示1：显示；0：不显示'")
+    @Column(name = "is_show",columnDefinition = BaseExplain.MENU_IS_SHOW)
     private Boolean isShow;
 
     @Transient

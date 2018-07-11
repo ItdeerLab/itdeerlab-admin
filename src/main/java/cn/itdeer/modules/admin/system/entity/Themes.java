@@ -1,6 +1,7 @@
 package cn.itdeer.modules.admin.system.entity;
 
 import cn.itdeer.common.base.BaseEntity;
+import cn.itdeer.common.base.BaseExplain;
 import lombok.Data;
 import lombok.ToString;
 
@@ -24,23 +25,23 @@ import javax.persistence.Table;
 public class Themes extends BaseEntity {
 
     @Basic
-    @Column(name = "name",columnDefinition="varchar(50) COMMENT '主题名称'")
+    @Column(name = "name",columnDefinition = BaseExplain.THEMES_NAME)
     private String name;
 
     @Basic
-    @Column(name = "status",columnDefinition="BIT COMMENT '主题的当前状态'")
+    @Column(name = "status",columnDefinition = BaseExplain.THEMES_STATUS)
     private Boolean status;
 
     @Basic
-    @Column(name = "logo_id",columnDefinition="varchar(50) COMMENT '主题logoID'")
+    @Column(name = "logo_id",columnDefinition = BaseExplain.THEMES_LOGO_ID)
     private String logoId;
 
     @Basic
-    @Column(name = "user_id",columnDefinition="varchar(50) COMMENT '用户ID'")
+    @Column(name = "user_id",columnDefinition = BaseExplain.THEMES_USER_ID)
     private String userId;
 
     @Basic
-    @Column(name = "if_default",columnDefinition="BIT COMMENT '是否为默认主题'")
+    @Column(name = "if_default",columnDefinition = BaseExplain.THEMES_IF_DEFAULT)
     private Boolean ifDefault;
 
 }
