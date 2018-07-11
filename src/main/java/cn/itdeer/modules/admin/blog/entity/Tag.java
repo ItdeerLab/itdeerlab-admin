@@ -1,5 +1,12 @@
 package cn.itdeer.modules.admin.blog.entity;
 
+import cn.itdeer.common.base.BaseEntity;
+import lombok.Data;
+import lombok.ToString;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Description :
  * PackageName : cn.itdeer.modules.admin.blog.entity
@@ -7,5 +14,11 @@ package cn.itdeer.modules.admin.blog.entity;
  * CreatorName : itdeer.cn
  * CreateTime : 18-7-10/上午9:54
  */
-public class Tag {
+
+@Data
+@Entity
+@ToString
+@Table(name = "blog_tag")
+public class Tag extends BaseEntity {
+
 }
