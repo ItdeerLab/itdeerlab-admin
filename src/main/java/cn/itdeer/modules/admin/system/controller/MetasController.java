@@ -69,7 +69,7 @@ public class MetasController extends BaseController {
         checkParameter("id",id);
 
         metasService.delete(id);
-        addMessage(ra,Message.METAS_DELETE_FAIL);
+        addMessage(ra,Message.METAS_DELETE_SUCCESS);
 
         return "redirect:/admin/system/metas/list";
     }

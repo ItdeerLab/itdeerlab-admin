@@ -15,9 +15,16 @@ import lombok.Getter;
 public enum Message {
 
     METAS_SAVE_SUCCESS("页面配置信息保存成功","执行成功！","success"),
+    METAS_DELETE_SUCCESS("页面配置信息删除成功","执行成功！","success"),
     METAS_DELETE_FAIL("页面配置信息删除失败","执行失败！","error"),
+
     THEMES_SAVE_SUCCESS("主题信息保存成功","执行成功！","success"),
-    THEMES_DELETE_FAIL("主题信息删除失败","执行失败","error")
+    THEMES_DELETE_FAIL("主题信息删除失败","执行失败","error"),
+
+    ARTICLE_SAVE_SUCCESS("文章信息保存成功","执行成功！","success"),
+
+    ARTICLE_DELETE_SUCCESS("文章信息删除成功","执行成功！","success"),
+    ARTICLE_DELETE_FAIL("文章信息删除失败","执行失败！","error"),
     ;
 
     private String title;
