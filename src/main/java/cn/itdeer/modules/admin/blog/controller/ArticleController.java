@@ -6,6 +6,10 @@ import cn.itdeer.common.message.Message;
 import cn.itdeer.modules.admin.blog.entity.Article;
 import cn.itdeer.modules.admin.blog.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +32,29 @@ public class ArticleController  extends BaseController{
 
     @Autowired
     private ArticleService articleService;
+
+
+    /**
+     * 查询全部文章
+     * @param pageable
+     * @param model
+     * @return
+     * @throws GeneralException
+     */
+    @GetMapping(value = "/findAll")
+    public String findAll(@PageableDefault(size = 10,sort = {"createTime"},direction = Sort.Direction.ASC) Pageable pageable,Model model) throws GeneralException{
+
+        Page<Article> page = articleService.findAll(pageable);
+        model.addAttribute("page",page);
+        return null;
+    }
+
+    @GetMapping(value = "/findAllByCategory")
+    public String findAllByCategory(@PageableDefault(size = 10,sort = {"createTime"},direction = Sort.Direction.ASC) Pageable pageable,Model model){
+        Page<Article> page = articleService.findAllByCategory(pageable);
+        model.addAttribute("page",page);
+        return null;
+    }
 
     /**
      * 按照ID查询文章的信息

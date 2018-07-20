@@ -2,6 +2,8 @@ package cn.itdeer.modules.admin.blog.service;
 
 import cn.itdeer.common.exception.general.GeneralException;
 import cn.itdeer.modules.admin.blog.entity.Article;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Description : 博客管理(文章信息)服务层接口
@@ -12,6 +14,15 @@ import cn.itdeer.modules.admin.blog.entity.Article;
  */
 
 public interface ArticleService {
+
+
+    /**
+     *
+     * @param pageable 分页Bean
+     * @return
+     * @throws GeneralException
+     */
+    Page<Article> findAll(Pageable pageable) throws GeneralException;
 
 
     /**
@@ -36,4 +47,11 @@ public interface ArticleService {
      * @throws GeneralException 统一异常处理
      */
     void delete(String id) throws GeneralException;
+
+    /**
+     * 按照分类查询
+     * @param pageable
+     * @return
+     */
+    Page<Article> findAllByCategory(Pageable pageable);
 }
