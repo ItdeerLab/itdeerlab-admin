@@ -24,32 +24,31 @@ public class ArticleServiceImpl implements ArticleService{
 
 
     /**
-     *
+     * 分页查询所有文章
      * @param pageable 分页Bean
-     * @return
+     * @return 封装的PageBean
      * @throws GeneralException
      */
     @Override
-    public Page<Article> findAll(Pageable pageable) throws GeneralException {
+    public Page<Article> findAll(Pageable pageable) {
         return articleRepository.findAll(pageable);
     }
 
     /**
-     *
+     * 按照ID进行查询Article的信息
      * @param id Article的ID
-     * @return
-     * @throws GeneralException
+     * @return 一个Article对象
      */
     @Override
-    public Article findById(String id) throws GeneralException {
+    public Article findById(String id) {
         return articleRepository.getOne(id);
     }
 
     /**
-     *
+     * 保存一个Article对象
      * @param article 一个Article对象
-     * @return
-     * @throws GeneralException
+     * @return 返回保存的Article对象
+     * @throws GeneralException 统一异常处理
      */
     @Override
     public Article save(Article article) throws GeneralException {
@@ -57,9 +56,9 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     /**
-     *
+     * 按照ID删除一个Article对象
      * @param id Article的ID
-     * @throws GeneralException
+     * @throws GeneralException 统一异常处理
      */
     @Override
     public void delete(String id) throws GeneralException {
@@ -67,12 +66,24 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     /**
-     *
-     * @param pageable
-     * @return
+     * 按照分类查询
+     * @param category 类别
+     * @param pageable 分页Bean
+     * @return 封装的PageBean
      */
     @Override
-    public Page<Article> findAllByCategory(Pageable pageable) {
-        return null;
+    public Page<Article> findAllByCategory(String category,Pageable pageable) {
+        return articleRepository.findByCategory(category,pageable);
+    }
+
+    /**
+     * 按照发布状态查询
+     * @param releaseState 状态
+     * @param pageable 分页Bean
+     * @return 封装的PageBean
+     */
+    @Override
+    public Page<Article> findAllByReleaseState(String releaseState,Pageable pageable) {
+        return articleRepository.findByReleaseState(releaseState,pageable);
     }
 }

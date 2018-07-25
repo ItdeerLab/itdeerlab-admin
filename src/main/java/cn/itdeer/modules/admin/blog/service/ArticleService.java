@@ -17,21 +17,19 @@ public interface ArticleService {
 
 
     /**
-     *
+     * 分页查询所有文章
      * @param pageable 分页Bean
-     * @return
-     * @throws GeneralException
+     * @return 封装的PageBean
      */
-    Page<Article> findAll(Pageable pageable) throws GeneralException;
+    Page<Article> findAll(Pageable pageable) ;
 
 
     /**
      * 按照ID进行查询Article的信息
      * @param id Article的ID
      * @return 一个Article对象
-     * @throws GeneralException 统一异常处理
      */
-    Article findById(String id) throws GeneralException;
+    Article findById(String id) ;
 
     /**
      * 保存一个Article对象
@@ -50,8 +48,17 @@ public interface ArticleService {
 
     /**
      * 按照分类查询
-     * @param pageable
-     * @return
+     * @param category 类别
+     * @param pageable 分页Bean
+     * @return 封装的PageBean
      */
-    Page<Article> findAllByCategory(Pageable pageable);
+    Page<Article> findAllByCategory(String category,Pageable pageable);
+
+    /**
+     * 按照发布状态查询
+     * @param releaseState 状态
+     * @param pageable 分页Bean
+     * @return 封装的PageBean
+     */
+    Page<Article> findAllByReleaseState(String releaseState,Pageable pageable);
 }

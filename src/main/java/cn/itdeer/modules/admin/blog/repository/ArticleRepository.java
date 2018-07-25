@@ -1,7 +1,8 @@
 package cn.itdeer.modules.admin.blog.repository;
 
-import cn.itdeer.common.base.BaseRepository;
 import cn.itdeer.modules.admin.blog.entity.Article;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,21 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface ArticleRepository extends JpaRepository<Article,String>,BaseRepository<Article> {
+public interface ArticleRepository extends JpaRepository<Article,String> {
 
+    /**
+     * 按照分类查询
+     * @param category 类别
+     * @param pageable 分页Bean
+     * @return 封装的PageBean
+     */
+    Page<Article> findByCategory(String category,Pageable pageable);
+
+    /**
+     * 按照发布状态查询
+     * @param releaseState 状态
+     * @param pageable 分页Bean
+     * @return 封装的PageBean
+     */
+    Page<Article> findByReleaseState(String releaseState,Pageable pageable);
 }

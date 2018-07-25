@@ -7,5 +7,5 @@ package cn.itdeer.modules.admin.blog.repository;
  * CreatorName : itdeer.cn
  * CreateTime : 18-7-10/上午9:55
  */
-public class TagRepository {
+public interface TagRepository {
 }

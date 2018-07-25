@@ -28,7 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/admin/blog/article")
-public class ArticleController  extends BaseController{
+public class ArticleController extends BaseController{
 
     @Autowired
     private ArticleService articleService;
@@ -49,9 +49,17 @@ public class ArticleController  extends BaseController{
         return null;
     }
 
-    @GetMapping(value = "/findAllByCategory")
-    public String findAllByCategory(@PageableDefault(size = 10,sort = {"createTime"},direction = Sort.Direction.ASC) Pageable pageable,Model model){
-        Page<Article> page = articleService.findAllByCategory(pageable);
+    @GetMapping(value = "/findAllByCategory/{category}")
+    public String findAllByCategory(@PageableDefault(size = 10,sort = {"createTime"},direction = Sort.Direction.ASC) Pageable pageable,@PathVariable(name = "category") String category,Model model){
+        Page<Article> page = articleService.findAllByCategory(category,pageable);
+        model.addAttribute("page",page);
+        return null;
+    }
+
+
+    @GetMapping(value = "/findAllByReleaseState/{releaseState}")
+    public String findAllByReleaseState(@PageableDefault(size = 10,sort = {"createTime"},direction = Sort.Direction.ASC) Pageable pageable,@PathVariable(name = "releaseState") String releaseState,Model model){
+        Page<Article> page = articleService.findAllByReleaseState(releaseState,pageable);
         model.addAttribute("page",page);
         return null;
     }
