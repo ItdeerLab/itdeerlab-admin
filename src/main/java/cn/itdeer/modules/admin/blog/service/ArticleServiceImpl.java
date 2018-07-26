@@ -27,7 +27,6 @@ public class ArticleServiceImpl implements ArticleService{
      * 分页查询所有文章
      * @param pageable 分页Bean
      * @return 封装的PageBean
-     * @throws GeneralException
      */
     @Override
     public Page<Article> findAll(Pageable pageable) {

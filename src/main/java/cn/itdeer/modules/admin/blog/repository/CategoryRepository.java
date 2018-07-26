@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 
 /**
- * Description :
+ * Description : 博客管理(类别信息)数据仓库
  * PackageName : cn.itdeer.modules.admin.blog.repository
  * ProjectName : itdeerlab-admin
  * CreatorName : itdeer.cn
@@ -17,4 +17,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface CategoryRepository extends JpaRepository<Category,String> {
+
 }
