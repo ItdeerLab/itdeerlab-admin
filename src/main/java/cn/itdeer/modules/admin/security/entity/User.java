@@ -2,14 +2,13 @@ package cn.itdeer.modules.admin.security.entity;
 
 import cn.itdeer.common.base.BaseEntity;
 import cn.itdeer.common.base.BaseExplain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Set;
 
 /**
  * Description : 权限管理(User用户)实体类
@@ -29,7 +28,9 @@ public class User extends BaseEntity{
     @Column(name = "name",columnDefinition = BaseExplain.USER_NAME)
     private String name;
 
+
     @Basic
+    @JsonIgnore
     @Column(name = "password",columnDefinition = BaseExplain.USER_PASSWORD)
     private String password;
 
@@ -110,4 +111,9 @@ public class User extends BaseEntity{
     @Column(name = "address",columnDefinition = BaseExplain.USER_ADDRESS)
     private String address;
 
+    @ManyToMany
+    @JoinTable(name = "security_user_role",joinColumns = {
+            @JoinColumn(name = "security_user_id",referencedColumnName = "ID")},inverseJoinColumns = {
+            @JoinColumn(name = "security_role_id",referencedColumnName = "ID")})
+    private Set<Role> roles;
 }

@@ -2,6 +2,7 @@ package cn.itdeer.modules.admin.security.entity;
 
 import cn.itdeer.common.base.BaseEntity;
 import cn.itdeer.common.base.BaseExplain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
 
@@ -20,7 +21,7 @@ import java.util.Set;
 @Data
 @Entity
 @ToString
-@Table(name = "security_rule")
+@Table(name = "security_role")
 public class Role extends BaseEntity {
 
     @Basic
@@ -39,11 +40,13 @@ public class Role extends BaseEntity {
     @Column(name = "dept_name",columnDefinition = BaseExplain.ROLE_DEPT_NAME)
     private String deptName;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
-
-    @Transient
-    private Set<User> users = new HashSet<User>();      //用户列表
-
-    @Transient
-    private Set<Menu> menus = new HashSet<Menu>();     //角色菜单列表
+    @ManyToMany
+    @JoinTable(name = "security_role_menu",joinColumns = {
+            @JoinColumn(name = "security_role_id",referencedColumnName = "ID")},inverseJoinColumns = {
+            @JoinColumn(name = "security_menu_id",referencedColumnName = "ID")})
+    private Set<Menu> menus;
 }

@@ -64,8 +64,8 @@ public class Menu extends BaseEntity {
     private Boolean isShow;
 
     @Transient
-    private Set<Role> menus = new HashSet<Role>();     //角色菜单列表
+    private Set<Menu> child; // 所有子菜单编号
 
-    @Transient
-    private Set<Menu> child = new HashSet<Menu>(); // 所有子菜单编号
+    @ManyToMany(mappedBy = "menus")
+    private Set<Role> roles;
 }
