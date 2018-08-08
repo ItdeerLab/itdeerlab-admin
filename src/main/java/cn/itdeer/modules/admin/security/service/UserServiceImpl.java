@@ -1,13 +1,16 @@
 package cn.itdeer.modules.admin.security.service;
 
 import cn.itdeer.modules.admin.security.entity.User;
+import cn.itdeer.modules.admin.security.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * Description : 用户Service实现类
+ * Description : 权限管理(用户信息)服务层实现
  * PackageName : cn.itdeer.modules.admin.user.service
  * ProjectName : itdeerlab-admin
  * CreatorName : itdeer.cn
@@ -17,6 +20,8 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService{
 
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      *
@@ -25,27 +30,17 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public User findById(String id) {
-        return null;
+        return userRepository.getOne(id);
     }
 
     /**
      *
-     * @param page 查询的页码
-     * @param pageSize 每一页查询的条目
+     * @param pageable
      * @return
      */
     @Override
-    public Page<User> findAllByPage(int page, int pageSize) {
-        return null;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public List<User> findAll() {
-        return null;
+    public Page<User> findAllByPage(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 
     /**
@@ -53,8 +48,8 @@ public class UserServiceImpl implements UserService{
      * @param user 需要保存的用户对象
      */
     @Override
-    public void save(User user) {
-
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     /**
@@ -63,6 +58,6 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public void delete(String id) {
-
+        userRepository.deleteById(id);
     }
 }

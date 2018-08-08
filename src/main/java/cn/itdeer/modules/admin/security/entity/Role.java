@@ -42,11 +42,11 @@ public class Role extends BaseEntity {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private Set<User> users = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "security_role_menu",joinColumns = {
             @JoinColumn(name = "security_role_id",referencedColumnName = "ID")},inverseJoinColumns = {
             @JoinColumn(name = "security_menu_id",referencedColumnName = "ID")})
-    private Set<Menu> menus;
+    private Set<Menu> menus = new HashSet<>();
 }

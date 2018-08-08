@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -115,5 +116,5 @@ public class User extends BaseEntity{
     @JoinTable(name = "security_user_role",joinColumns = {
             @JoinColumn(name = "security_user_id",referencedColumnName = "ID")},inverseJoinColumns = {
             @JoinColumn(name = "security_role_id",referencedColumnName = "ID")})
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 }

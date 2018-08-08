@@ -41,8 +41,7 @@ public class ApiUserController {
     @GetMapping("/getAllUser")
     @ApiOperation(value = "获取所有用户信息", tags = {"获取全部用户列表"}, notes = "用户列表")
     public List<User> getAllUser(){
-        List<User> list = userService.findAll();
-        return list;
+        return null;
     }
 
 

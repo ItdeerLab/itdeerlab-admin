@@ -67,5 +67,5 @@ public class Menu extends BaseEntity {
     private Set<Menu> child; // 所有子菜单编号
 
     @ManyToMany(mappedBy = "menus")
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 }
